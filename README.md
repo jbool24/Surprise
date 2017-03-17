@@ -5,7 +5,5 @@ App that both users sign up for and the bars/restaurants/businesses can provide 
 Dependencies:
 
 Express
-
 MySQL
-
 Sequelize
