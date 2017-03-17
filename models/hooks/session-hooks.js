@@ -1,5 +1,5 @@
-const Session = require('../models').Session;
 const User    = require('../models').User;
+const Session = require('../models').Session;
 
 // Create a session for the given user
 Session.prototype.createSessionForUser = function(user, conf, cb) {
