@@ -5,15 +5,13 @@ const Session = require('../models').Session;
 // Create a new User
 exports.create = function(req, res) {
     const p = req.body;
-    const newUser = User.create({
+    User.create({
         username: p.username,
         email: p.email,
         phone: p.phone,
         countryCode: p.countryCode,
         password: p.password
-    });
-
-    newUser.save(function(err, doc) {
+    }).then((err, doc) => {
         if (err) {
             res.status(500).send({message:'Error saving new user - please try again.'});
         } else {

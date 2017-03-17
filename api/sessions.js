@@ -19,15 +19,15 @@ exports.create = function(req, res) {
     });
 
     function invalid() {
-        throw new Error(res, 403, 'Invalid username/password.');
+        res.status(403).send({message:'Invalid username/password.'});
     }
 
     function valid(user) {
         Session.createSessionForUser(user, false, (err, session, authyResponse) => {
             if (err || !session) {
-                response.status(500).send({message: err}) //FIXME
+                res.status(500).send({message: err});
             } else {
-                res.send({token: session.token, authyResponse: authyResponse}) :
+                res.send({token: session.token, authyResponse: authyResponse});
             }
         });
     }
@@ -36,7 +36,7 @@ exports.create = function(req, res) {
 // Destroy the given session (log out)
 exports.destroy = function(req, res) {
     req.session && req.session.remove((err, doc) => {
-        ir(err) {
+        if (err) {
             throw new Error(err)
         } else {
             res.send(200).end();
@@ -53,7 +53,7 @@ exports.authyCallback = function(req, res) {
         where: {
             authyId: authyId
         }
-    }, (err, user) => {
+    }).then((err, user) => {
         if (err || !user)
             return invalid();
         user.authyStatus = request.body.status;
@@ -69,7 +69,7 @@ exports.authyStatus = function(req, res) {
         : 'unveridied';
     if (status === 'approved') {
         req.session.confirmed = true;
-        req.session.save(err => {
+        req.session.save().then(err => {
             if (err)
                 res.status(500).send({message: 'Sorry. There was an error validating your session.'});
             }
@@ -97,7 +97,7 @@ exports.verify = function(req, res) {
 
         // otherwise we're good! Validate the session
         req.session.confirmed = true;
-        req.session.save(err => {
+        req.session.save().then(err => {
             if (err)
                 res.status(500).send({message: 'There was an error validating your session.'});
 
