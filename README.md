@@ -9,6 +9,13 @@ MySQL
 Sequelize
 
 
+# HOW TO START
+
+- cd to `bin/www` 
+- node www
+
+# Requirements
+
 The requirements for Project #2 are as follows:
 
 Must use a Node and Express Web Server

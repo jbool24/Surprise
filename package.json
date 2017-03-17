@@ -1,0 +1,32 @@
+{
+  "name": "Surprise",
+  "version": "1.0.0",
+  "description": "App that users sign up for and the bars/restaurants/businesses can provide limited time events to users based on either their location or by them actively requesting them.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.15.2",
+    "passport": "^0.3.2",
+    "sequelize": "^3.30.2",
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "hbs": "~4.0.1",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klawgolfer7/Surprise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klawgolfer7/Surprise/issues"
+  },
+  "homepage": "https://github.com/klawgolfer7/Surprise#readme"
+}
