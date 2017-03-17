@@ -7,3 +7,8 @@ Dependencies:
 Express
 MySQL
 Sequelize
+
+# HOW TO START
+
+- cd to `bin/www` 
+- node www
