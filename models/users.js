@@ -53,6 +53,12 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
 
+    }, {
+        classMethods: {
+          associate: function(models) {
+            Users.belongsToMany(models.Events, {through: 'UserEvents'});
+          },
+        }
     });
 
     //'return' the post after defining
