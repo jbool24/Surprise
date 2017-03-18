@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataType){
 	var Users = sequelize.define("Users", {
 		//this model needs: userName, email, countyCode, authyId, phone, password
 		userName: {
-			type: DataType.STRING,
+			type: DataTypes.STRING,
 			//allowNull: false,
 			validate:{
 				len: [1, 150],
@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataType){
 		},
 
 		email: {
-			type: DataType.STRING,
+			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
 				isEmail: true,
