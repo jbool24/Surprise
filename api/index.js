@@ -1,7 +1,7 @@
-var middleware = require('./middleware');
 var users = require('./users');
 var sessions = require('./sessions');
 var bodyParser = require('body-parser');
+var middleware = require('./middleware');
 
 // Mount API routes on the Express web app
 module.exports = function(app) {

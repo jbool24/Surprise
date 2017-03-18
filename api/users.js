@@ -12,7 +12,7 @@ exports.create = function(req, res) {
         phone: p.phone,
         countryCode: p.countryCode
     }).then((user) => {
-      console.log(user) // TODO
+      // console.log(user) // TODO
         // Create a pre-authorized session token for the new user
         Session.createSessionForUser(user, true, (err, sessionInstance) => {
                 if (err) {
@@ -31,13 +31,13 @@ exports.create = function(req, res) {
 // get info for currently logged in username
 exports.getUser = function(req, res) {
     if (req.user) {
-        const u = request.user;
+        const u = req.user;
         res.send({
             username: u.username,
             email: u.email,
             phone: u.phone
         });
     } else {
-        resp.status(404).send({message:'No user found for session - please log in again.'});
+        res.status(404).send({message:'No user found for session - please log in again.'});
     }
 };

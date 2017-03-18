@@ -1,5 +1,3 @@
-// const hooks = require('./hooks/session-hooks');
-// const Users = require('../').Users;
 const uuid = require('node-uuid');
 
 'use strict';
@@ -30,13 +28,16 @@ module.exports = function(sequelize, DataTypes) {
     });
 
 
-
     // Create a session for the given user
     function createSessionForUser(user, conf, cb) {
-
         console.log('Inside createSessionForUser-------------------') // TODO
         console.log(`USER ID: ${user.id}-${conf}--${user.password}`)
-        const newSession = {userId: user.id, confirmed: conf, token: uuid.v1()};
+        const newSession = {
+          userId: user.id,
+          confirmed: conf,
+          token: uuid.v1()
+        };
+        
         console.log(newSession);
 
         // we need to do the 2FA step first
@@ -54,8 +55,8 @@ module.exports = function(sequelize, DataTypes) {
         // Save the session object
         function save(authyResponse) {
           console.log(this);
-            Session.create(newSession).then(function(sessionIns) {
-                cb(null,sessionIns);
+            Session.create(newSession).then(function(sessionInstance) {
+                cb(null,sessionInstance);
             });
         }
     };
