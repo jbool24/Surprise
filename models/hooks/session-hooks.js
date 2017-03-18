@@ -1,12 +1,14 @@
-const User = require('../models').User;
-const Session = require('../models').Session;
+const User = require('../../models').User;
+const Session = require('../../models').Session;
 const uuid = require('node-uuid');
 
 // Create a session for the given user
 exports.createSessionForUser = function(user, conf, cb) {
 
     console.log('createSessionForUser called-------------------') // TODO
+    console.log(`USER ID: ${user.id}-${conf}`) 
     const newSession = Session.build({userId: user.id, confirmed: conf, token: uuid.v1()});
+    console.log(newSession);
 
     // we need to do the 2FA step first
     if (!conf) {

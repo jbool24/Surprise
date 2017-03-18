@@ -1,8 +1,9 @@
-const uuid = require('node-uuid');
+const hooks = require('./hooks/session-hooks');
 
+'use strict';
 module.exports = function(sequelize, DataTypes) {
     const Session = sequelize.define('Session', {
-        userID: {
+        userId: {
             type: DataTypes.STRING,
             required: true
         },
@@ -20,40 +21,11 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 // associations can be defined here
             },
-            createSessionForUser,
+            createSessionForUser: hooks.createSessionForUser,
         },
         instanceMethods: {
-            getUser,
+            getUser: hooks.getUser,
         },
     });
     return Session;
-};
-
-function createSessionForUser(user, conf, cb) {
-    console.log('createSessionForUser called-------------------') // TODO
-    const newSession = Session.build({userId: user.id, confirmed: conf, token: uuid.v1()}).then((session) => {
-        // we need to do the 2FA step first
-        if (!conf) {
-            user.sendOneTouch((err, authyResponse) => {
-                if (err)
-                    return cb.call(session, err);
-                save(authyResponse);
-            });
-        } else {
-            // if it's pre-confirmed just save the session
-            save();
-        }
-    }).catch((err) => console.log(err));
-
-    // Save the session object
-    function save(authyResponse) {
-        newSession.save().then(function(err, doc) {
-            cb.call(newSession, err, doc, authyResponse);
-        });
-    }
-};
-
-// Get a user model for this session
-function getUser(cb) {
-    User.findById(this.userId, cb);
 };

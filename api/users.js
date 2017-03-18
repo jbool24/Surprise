@@ -13,7 +13,6 @@ exports.create = function(req, res) {
         countryCode: p.countryCode
     }).then((user) => {
       // console.log(user) // TODO
-      console.log(Session.createSessionForUser)
         // Create a pre-authorized session token for the new user
         Session.createSessionForUser(user, true, (err, sessionInstance) => {
                 if (err) {
