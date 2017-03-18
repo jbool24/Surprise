@@ -37,8 +37,6 @@ module.exports = function(sequelize, DataTypes) {
           confirmed: conf,
           token: uuid.v1()
         };
-        
-        console.log(newSession);
 
         // we need to do the 2FA step first
         if (!conf) {
@@ -54,16 +52,15 @@ module.exports = function(sequelize, DataTypes) {
 
         // Save the session object
         function save(authyResponse) {
-          console.log(this);
             Session.create(newSession).then(function(sessionInstance) {
                 cb(null,sessionInstance);
             });
         }
     };
 
-    // Get a user model for this session
+    // Instance Method Declaration: Gets the user model for this session
     function getUser(cb) {
-        // Users.findById(this.userId, cb);
+        Users.findById(this.userId, cb);
     };
 
     return Session;

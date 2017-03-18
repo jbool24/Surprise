@@ -1,7 +1,7 @@
-const hooks = require('./hooks/session-hooks');
-const bcrypt = require('bcrypt');
-const authConfig = require('../config/auth');
-const onetouch = require('../api/onetouch');
+const bcrypt        = require('bcrypt');
+const authConfig    = require('../config/auth');
+const onetouch      = require('../api/onetouch');
+const hooks         = require('./hooks/user-hooks');
 
 // Create authenticated Authy API client
 const authy = require('authy')(authConfig.authyApiKey);
