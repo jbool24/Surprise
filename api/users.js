@@ -7,25 +7,24 @@ exports.create = function(req, res) {
     const p = req.body;
     User.create({
         username: p.username,
+        password: p.password,
         email: p.email,
         phone: p.phone,
-        countryCode: p.countryCode,
-        password: p.password
-    }).then((err, doc) => {
-        if (err) {
-            res.status(500).send({message:'Error saving new user - please try again.'});
-        } else {
-            // Create a pre-authorized session token for the new user
-            Session.createSessionForUser(doc, true, function(err, sessionDoc) {
+        countryCode: p.countryCode
+    }).then((user) => {
+      // console.log(user) // TODO
+      console.log(Session.createSessionForUser)
+        // Create a pre-authorized session token for the new user
+        Session.createSessionForUser(user, true, (err, sessionInstance) => {
                 if (err) {
+                    console.log(err) // TODO
                     res.status(500).send({message:'Your user was created but we could not log you in - please log in again.'});
                 } else {
-                    res.send({
-                        token: sessionDoc.token
-                    });
+                    res.send({ token: sessionInstance.token });
                 }
             });
-        }
+    }).catch((err) => {
+        if (err) res.status(500).send({message:'Error saving new user - please try again.'});
     });
 };
 

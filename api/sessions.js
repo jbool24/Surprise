@@ -2,24 +2,24 @@ const Session = require('../models').Session;
 const User = require('../models').User;
 
 exports.create = function(req, res) {
+    console.log(req.body);
     const email = req.body.email;
     const candidatePassword = req.body.password;
 
-    User.findOne({where: {
-            email
-        }}).then((err, user) => {
-        if (err || !user)
-            return invalid();
-
+    User.findOne({where: {email} }).then((user) => {
         user.comparePassword(candidatePassword, (err, match) => {
             if (err || !match)
                 return invalid();
             return valid(user);
         });
-    });
+    }).catch((err) => {
+        if (err || !user)
+            return invalid();
+        }
+    );
 
     function invalid() {
-        res.status(403).send({message:'Invalid username/password.'});
+        res.status(403).send({message: 'Invalid username/password.'});
     }
 
     function valid(user) {
@@ -37,7 +37,7 @@ exports.create = function(req, res) {
 exports.destroy = function(req, res) {
     req.session && req.session.remove((err, doc) => {
         if (err) {
-            throw new Error(err)
+            res.status(500).send({message: err});
         } else {
             res.send(200).end();
         }

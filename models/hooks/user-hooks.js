@@ -10,10 +10,10 @@ const SALT_WORK_FACTOR = 10;
 
 
 // Middleware executed before save - hash the user's password
-User.hook('beforeSave', (user, options = null, next) => {
+User.hook('beforeCreate', (user, options = null, next) => {
     const self = user;
     // only hash the password if it has been modified (or is new)
-    if (!self.isModified('password'))
+    if (!self.changed('password'))
         return next();
 
     // generate a salt

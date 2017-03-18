@@ -8,6 +8,9 @@ const app = require('../app');
 const debug = require('debug')('surprise:server');
 const http = require('http');
 
+// Requiring our models for syncing
+const db = require("../models");
+
 /**
  * Get port from environment and store in Express.
  */
@@ -86,5 +89,9 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+
+  // Syncing our sequelize models and then starting our express app
+  db.sequelize.sync({ force: true }).then(() => console.log('Connected to DB'));
+
   debug('Listening on ' + bind);
 }

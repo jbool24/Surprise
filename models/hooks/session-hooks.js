@@ -1,17 +1,18 @@
-const User    = require('../models').User;
+const User = require('../models').User;
 const Session = require('../models').Session;
+const uuid = require('node-uuid');
 
 // Create a session for the given user
-Session.prototype.createSessionForUser = function(user, conf, cb) {
-    const newSession = new Session({
-        userId: user.id,
-        confirmed: conf,
-        token: uuid.v1()
-    });
+exports.createSessionForUser = function(user, conf, cb) {
+
+    console.log('createSessionForUser called-------------------') // TODO
+    const newSession = Session.build({userId: user.id, confirmed: conf, token: uuid.v1()});
+
     // we need to do the 2FA step first
     if (!conf) {
-        user.sendOneTouch(function(err, authyResponse) {
-            if (err) return cb.call(newSession, err);
+        user.sendOneTouch((err, authyResponse) => {
+            if (err)
+                return cb.call(newSession, err);
             save(authyResponse);
         });
     } else {
@@ -21,13 +22,13 @@ Session.prototype.createSessionForUser = function(user, conf, cb) {
 
     // Save the session object
     function save(authyResponse) {
-        newSession.save(function(err, doc) {
+        newSession.save().then(function(err, doc) {
             cb.call(newSession, err, doc, authyResponse);
         });
     }
 };
 
 // Get a user model for this session
-Session.prototype.getUser = function(cb) {
+exports.getUser = function(cb) {
     User.findById(this.userId, cb);
 };
