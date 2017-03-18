@@ -76,7 +76,7 @@ User.prototype.sendOneTouch = function(cb) {
             authyres = err;
             err = null;
         }
-        cb.call(self, err, authyres);
+        cb.call(self, err, aut`hyres);
     });
 };
 

@@ -1,22 +1,6 @@
 'use strict';
-<<<<<<< HEAD
 //use model export to
-module.exports = function(sequelize, DataTypes) {
-    //create User model
-    var Users = sequelize.define("Users", {
-        //this model needs: userName, email, countyCode, authyId, phone, password
-        userName: {
-            type: DataTypes.STRING,
-            //allowNull: false,
-            validate: {
-                len: [
-                    1, 150
-                ],
-                notNull: true
-            }
-=======
-//use model export to 
-module.exports = function(sequelize, DataType){
+module.exports = function(sequelize, DataTypes){
 	//create User model
 	var Users = sequelize.define("Users", {
 		//this model needs: userName, email, countyCode, authyId, phone, password
@@ -51,10 +35,9 @@ module.exports = function(sequelize, DataType){
 			}
 		},
 
-        authyId: { 
+        authyId: {
         	type: DataTypes.STRING,
         	allowNull: false
->>>>>>> 34ac1c0e640109627031b9a69859f5443f92263f
         },
 
         email: {
