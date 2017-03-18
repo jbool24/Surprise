@@ -1,12 +1,12 @@
 const Session = require('../models').Session;
-const User = require('../models').User;
+const Users = require('../models').Users;
 
 exports.create = function(req, res) {
     console.log(req.body);
     const email = req.body.email;
     const candidatePassword = req.body.password;
 
-    User.findOne({where: {email} }).then((user) => {
+    Users.findOne({where: {email} }).then((user) => {
         user.comparePassword(candidatePassword, (err, match) => {
             if (err || !match)
                 return invalid();
@@ -49,7 +49,7 @@ exports.authyCallback = function(req, res) {
     const authyId = request.body.authy_id;
 
     // Look for a user with the authy_id supplies
-    User.findOne({
+    Users.findOne({
         where: {
             authyId: authyId
         }

@@ -1,4 +1,4 @@
-const User = require('../../models').User;
+const Users = require('../../models').Users;
 const Session = require('../../models').Session;
 const uuid = require('node-uuid');
 
@@ -6,7 +6,7 @@ const uuid = require('node-uuid');
 exports.createSessionForUser = function(user, conf, cb) {
 
     console.log('createSessionForUser called-------------------') // TODO
-    console.log(`USER ID: ${user.id}-${conf}`) 
+    console.log(`USER ID: ${user.id}-${conf}`)
     const newSession = Session.build({userId: user.id, confirmed: conf, token: uuid.v1()});
     console.log(newSession);
 
@@ -32,5 +32,5 @@ exports.createSessionForUser = function(user, conf, cb) {
 
 // Get a user model for this session
 exports.getUser = function(cb) {
-    User.findById(this.userId, cb);
+    Users.findById(this.userId, cb);
 };

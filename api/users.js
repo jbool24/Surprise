@@ -5,7 +5,7 @@ const Session = require('../models').Session;
 // Create a new User
 exports.create = function(req, res) {
     const p = req.body;
-    User.create({
+    Users.create({
         username: p.username,
         password: p.password,
         email: p.email,
