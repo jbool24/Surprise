@@ -1,6 +1,6 @@
 const Users = require('../../models').Users;
 const Session = require('../../models').Session;
-const uuid = require('node-uuid');
+/*const uuid = require('node-uuid');*/
 
 // Create a session for the given user
 exports.createSessionForUser = function(user, conf, cb) {
