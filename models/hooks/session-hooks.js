@@ -4,10 +4,10 @@ const uuid = require('node-uuid');
 
 // Create a session for the given user
 exports.createSessionForUser = function(user, conf, cb) {
-
-    console.log('createSessionForUser called-------------------') // TODO
-    console.log(`USER ID: ${user.id}-${conf}`)
-    const newSession = Session.build({userId: user.id, confirmed: conf, token: uuid.v1()});
+console.log(Session);
+    console.log('Inside createSessionForUser-------------------') // TODO
+    console.log(`USER ID: ${user.id}-${conf}--${user.password}`)
+    const newSession = {userId: user.id, confirmed: conf, token: uuid.v1()};
     console.log(newSession);
 
     // we need to do the 2FA step first
@@ -24,8 +24,8 @@ exports.createSessionForUser = function(user, conf, cb) {
 
     // Save the session object
     function save(authyResponse) {
-        newSession.save().then(function(err, doc) {
-            cb.call(newSession, err, doc, authyResponse);
+        Session.create(newSession).then(function(sessionIns) {
+            cb(err, sessionIns);
         });
     }
 };

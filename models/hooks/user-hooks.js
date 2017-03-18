@@ -1,7 +1,7 @@
 const bcrypt      = require('bcrypt');
-const User        = require('../../models').User;
-const onetouch    = require('../../api/onetouch');
 const authConfig  = require('../../config/auth');
+const onetouch    = require('../../api/onetouch');
+const Users       = require('../../models').Users;
 
 
 // Create authenticated Authy API client
@@ -10,7 +10,8 @@ const SALT_WORK_FACTOR = 10;
 
 
 // Middleware executed before save - hash the user's password
-User.hook('beforeCreate', (user, options = null, next) => {
+exports.beforeCreate = function(user, options = null, next) {
+    console.log("hook has been called")
     const self = user;
     // only hash the password if it has been modified (or is new)
     if (!self.changed('password'))
@@ -54,7 +55,7 @@ User.hook('beforeCreate', (user, options = null, next) => {
 });
 
 // Test candidate password
-User.prototype.comparePassword = function(candidatePassword, cb) {
+exports.comparePassword = function(candidatePassword, cb) {
     const self = this;
     bcrypt.compare(candidatePassword, self.password, function(err, isMatch) {
         if (err) return cb(err);
@@ -63,7 +64,7 @@ User.prototype.comparePassword = function(candidatePassword, cb) {
 };
 
 // Send a OneTouch request to this user
-User.prototype.sendOneTouch = function(cb) {
+exports.sendOneTouch = function(cb) {
     const self = this;
     self.authyStatus = 'unverified';
     self.save();
@@ -71,17 +72,17 @@ User.prototype.sendOneTouch = function(cb) {
     onetouch.send_approval_request(self.authyId, {
         message: 'Request to Login to Twilio demo app',
         email: self.email
-    }, function(err, authyres){
+    }, function(err, authyRes){
         if (err && err.success != undefined) {
             authyres = err;
             err = null;
         }
-        cb.call(self, err, aut`hyres);
+        cb.call(self, err, authyRes);
     });
 };
 
 // Send a 2FA token to this user
-User.prototype.sendAuthyToken = function(cb) {
+exports.sendAuthyToken = function(cb) {
     const self = this;
 
     authy.request_sms(self.authyId, function(err, response) {
@@ -90,7 +91,7 @@ User.prototype.sendAuthyToken = function(cb) {
 };
 
 // Test a 2FA token
-User.prototype.verifyAuthyToken = function(otp, cb) {
+exports.verifyAuthyToken = function(otp, cb) {
     const self = this;
     authy.verify(self.authyId, otp, function(err, response) {
         cb.call(self, err, response);

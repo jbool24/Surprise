@@ -6,13 +6,13 @@ const Session = require('../models').Session;
 exports.create = function(req, res) {
     const p = req.body;
     Users.create({
-        username: p.username,
+        userName: p.userName,
         password: p.password,
         email: p.email,
         phone: p.phone,
         countryCode: p.countryCode
     }).then((user) => {
-      // console.log(user) // TODO
+      console.log(user) // TODO
         // Create a pre-authorized session token for the new user
         Session.createSessionForUser(user, true, (err, sessionInstance) => {
                 if (err) {
@@ -23,6 +23,7 @@ exports.create = function(req, res) {
                 }
             });
     }).catch((err) => {
+        console.log(err)
         if (err) res.status(500).send({message:'Error saving new user - please try again.'});
     });
 };
