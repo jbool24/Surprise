@@ -1,8 +1,8 @@
 'use strict';
 //use umodel export to 
 module.exports = function(sequelize, DataType){
-	//create User model
-	var Users = sequelize.define("Users", {
+	//create events model
+	var Users = sequelize.define("Events", {
 		//this model needs: eventName, eventDate, eventOfferDuration, eventDescription
 		eventName: {
 			type: DataType.STRING,
@@ -38,5 +38,5 @@ module.exports = function(sequelize, DataType){
 	});
 
 	//'return' the post after defining
- return Users;
+ return Events;
 };
