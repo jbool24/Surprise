@@ -1,22 +1,22 @@
 {
   "development": {
-    "username": "root",
+    "username": "developer",
     "password": null,
-    "database": "database_development",
+    "database": "surprise_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
+    "username": "developer",
     "password": null,
-    "database": "database_test",
+    "database": "surprise_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
+    "username": "developer",
     "password": null,
-    "database": "database_production",
+    "database": "surprise_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
