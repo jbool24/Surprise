@@ -1,4 +1,4 @@
-const User = require('../models').User;
+const Users = require('../models').Users;
 const Session = require('../models').Session;
 
 

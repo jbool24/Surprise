@@ -1,11 +1,11 @@
 'use strict';
-//use umodel export to 
-module.exports = function(sequelize, DataType){
+//use umodel export to
+module.exports = function(sequelize, DataTypes){
 	//create events model
-	var Users = sequelize.define("Events", {
+	var Events = sequelize.define("Events", {
 		//this model needs: eventName, eventDate, eventOfferDuration, eventDescription
 		eventName: {
-			type: DataType.STRING,
+			type: DataTypes.STRING,
 			//allowNull: false,
 			validate:{
 				len: [1, 250],
@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataType){
 		},
 
 		eventDateTime: {
-			type: DataType.DATETIME,
+			type: DataTypes.DATE,
 			allowNull: false,
 		},
 
