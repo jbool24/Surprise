@@ -18,32 +18,29 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   </head>
-  <body>
+  <body class= "parallax">
   	<nav>
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+            <a href="#!" class="brand-logo"><i class="material-icons">star</i>Surprise!</a>
                  <ul class="right hide-on-med-and-down">
                     <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-                    <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
                     <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-                    <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
                   </ul>
             </div>
           </nav>
-  	<div class="row">
-  		<div class="col s12 m4 l3">
-  			<!-- navi bar -->
-  		</div>
-  		<div class="col s12 m8 l9">
-  			<!-- content -->
-  		</div>
-  		<h1> logo goes here></h1>
   	</div>
   	<div class= "row">
-  		<h2> infor about app</h2>
+  		<p> information about app goes here</p>
+   <button class="btn waves-effect waves-light" type="submit" >Sign up
+    <i class="material-icons right">input</i>
+  </button>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Log in
+    <i class="material-icons right">perm_identity</i>
+  </button>
+  <!-- modal that should open adter user selects to sign up -->
   	</div>
   	<div class= "card-panel hoverable">
-  	 <div class="row">
+  	 <div class="row" id="Page2">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
@@ -57,9 +54,8 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <i class="material_icons email"></i>	
-          <input id="icons_email" type="email" class="validate">
-          <label for="icons_email">Email</label>
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
@@ -77,6 +73,22 @@
     </form>
   </div>
   </div>
+  <!-- this should show up after user selects log in --> 
+  <div class= "card-panel hoverable">
+  	 <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input  id="user_name" type="text" class="validate">
+          <label for="user_name">Username</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="password" type="text" class="validate">
+          <label for="passowrd">Password</label>
+        </div>
+      </div>
+     </form>
+
 </div>
     {{{body}}}
   </body> 
@@ -87,5 +99,8 @@
     Materialize.updateTextFields();
   });
 
+ 
+
    </script>
 </html>
+

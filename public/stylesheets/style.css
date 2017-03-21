@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+.nav-wrapper{
+	background-color:#2bbbad;
+}
+
+.parallax { 
+    
+    background-image: url("./images/events.jpg");
+    height: 500px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+},
