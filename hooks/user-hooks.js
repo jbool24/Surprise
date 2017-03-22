@@ -1,6 +1,6 @@
 const bcrypt      = require('bcrypt');
-const onetouch    = require('../../api/onetouch');
-const Users       = require('../../models').Users;
+const onetouch    = require('../api/onetouch');
+const Users       = require('../models').Users;
 
 // Test candidate password
 exports.comparePassword = function(candidatePassword, cb) {
