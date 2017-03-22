@@ -6,7 +6,7 @@ const Session = require('../models').Session;
 exports.create = function(req, res) {
     const p = req.body;
     Users.create({
-        username: p.username,
+        userName: p.userName,
         password: p.password,
         email: p.email,
         phone: p.phone,
@@ -23,6 +23,7 @@ exports.create = function(req, res) {
                 }
             });
     }).catch((err) => {
+        console.log(err)
         if (err) res.status(500).send({message:'Error saving new user - please try again.'});
     });
 };
@@ -30,13 +31,13 @@ exports.create = function(req, res) {
 // get info for currently logged in username
 exports.getUser = function(req, res) {
     if (req.user) {
-        const u = request.user;
+        const u = req.user;
         res.send({
             username: u.username,
             email: u.email,
             phone: u.phone
         });
     } else {
-        resp.status(404).send({message:'No user found for session - please log in again.'});
+        res.status(404).send({message:'No user found for session - please log in again.'});
     }
 };
