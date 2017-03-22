@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  events.findAll().then(res.json('events'));
+  router.Events.findAll()
+  .then(res.json('Events'));
 });
 
 module.exports = router;
+
