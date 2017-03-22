@@ -4,7 +4,7 @@ body {
 }
 
 a {
-  color: #212121;
+  color: #00B7FF;
 }
 .nav-wrapper{
     background-color:#2bbbad ;
@@ -12,7 +12,7 @@ a {
 
 .parallax {
    
-   background-image: url("./images/events.jpg");
+   background-image: url("./public/images/events.jpg");
    height: 500px;
    background-attachment: fixed;
    background-position: center;
