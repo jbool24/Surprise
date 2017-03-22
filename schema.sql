@@ -47,7 +47,7 @@ CREATE TABLE `Sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` varchar(255) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
-  `confirmed` tinyint(1) DEFAULT NULL,
+  `confirmed` tinyint(1) DEFAULT 0,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -60,7 +60,7 @@ CREATE TABLE `Sessions` (
 
 LOCK TABLES `Sessions` WRITE;
 /*!40000 ALTER TABLE `Sessions` DISABLE KEYS */;
-INSERT INTO `Sessions` VALUES (1,'2','788318f0-0e8b-11e7-b928-6fd478ca9db7',1,'2017-03-21 23:09:44','2017-03-21 23:09:44'),(2,'3','6a880fe0-0e94-11e7-8511-c333b58efd80',1,'2017-03-22 00:13:46','2017-03-22 00:13:46');
+INSERT INTO `Sessions` VALUES (1,'1','788318f0-0e8b-11e7-b928-6fd478ca9db7',1,'2017-03-21 23:09:44','2017-03-21 23:09:44'),(2,'2','6a880fe0-0e94-11e7-8511-c333b58efd80',1,'2017-03-22 00:13:46','2017-03-22 00:13:46');
 /*!40000 ALTER TABLE `Sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
