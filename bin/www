@@ -91,7 +91,7 @@ function onListening() {
     : 'port ' + addr.port;
 
   // Syncing our sequelize models and then starting our express app
-  db.sequelize.sync({ force: false }).then(() => console.log('Connected to DB'));
+  db.sequelize.sync({ force: true }).then(() => console.log('Connected to DB'));
 
   debug('Listening on ' + bind);
 }

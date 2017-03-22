@@ -5,7 +5,7 @@ exports.create = function(req, res) {
     console.log(req.body);
     const email = req.body.email;
     const candidatePassword = req.body.password;
-
+    console.log(candidatePassword)
     Users.findOne({where: {email} }).then((user) => {
         user.comparePassword(candidatePassword, (err, match) => {
             if (err || !match)

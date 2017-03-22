@@ -1,0 +1,16 @@
+<form action="/users" accept-charset="UTF-8" method="post" class="add-user-form"><input type="hidden" name="authenticity_token" value="20c1d1abc2dc4389aabc441abe109ce2202bb4e5a3e0c960f52aafa09e749b39"><input type="hidden" name="email" value="jpbellero@gmail.com">
+    <div class="form-group m-b-20">
+        <input id="countries-input-1" class="countries-input" type="text" autocomplete="off" placeholder="Your Country"><input type="text" class="authy-countries" style="display:none">
+        <div class="validation-error text-left"></div>
+        <input type="hidden" id="country-code-1" name="country_code" value="1"></div>
+    <div class="form-group m-b-20">
+        <input type="text" name="cellphone" id="authy-cellphone" placeholder="Your Cellphone" class="form-control">
+        <div class="validation-error text-left"></div>
+    </div>
+    <div class="submit-section">
+        <input type="submit" value="Enable" class="btn btn-success btn-lg btn-block">
+        <div class="text-white m-t-5">
+            (This calls the Authy API underneath)
+        </div>
+    </div>
+</form>

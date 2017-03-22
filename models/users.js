@@ -72,7 +72,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Users.hook('beforeCreate', function(user, {}, next) {
         console.log("hook has been called")
-        const self = user;
+        let self = user;
         // only hash the password if it has been modified (or is new)
         if (!self.changed('password'))
             return next();
@@ -105,10 +105,14 @@ module.exports = function(sequelize, DataTypes) {
                     return;
                 }
                 self.authyId = response.user.id;
-                self.save(function(err, doc) {
-                    if (err || !doc)
+                self.save(function(err, user) {
+                    if (err || !user)
                         return next(err);
-                    self = doc;
+                    self = user;
+                    self.sendAuthyToken((err)=> {
+                      if (err)
+                        console.log(err);
+                    });
                 });
             });
         };

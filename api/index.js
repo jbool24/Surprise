@@ -18,10 +18,10 @@ module.exports = function(app) {
   // Get information about the currently logged in user
   app.get('/user', middleware.loginRequired, users.getUser);
 
-  // Create a new session
+  // Create a new session -- This is login cycle
   app.post('/session', sessions.create);
 
-  // Log out (destroy a session)
+  // Log out (destroy a session) -- This is logout cycle
   app.delete('/session', middleware.loginRequired, sessions.destroy);
 
   // Check the OneTouch status on the user

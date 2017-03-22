@@ -33,7 +33,7 @@ exports.sendOneTouch = function(cb) {
 exports.sendAuthyToken = function(cb) {
     const self = this;
 
-    authy.request_sms(self.authyId, function(err, response) {
+    authy.request_sms(self.authyId, true, function(err, response) {
         cb.call(self, err);
     });
 };
