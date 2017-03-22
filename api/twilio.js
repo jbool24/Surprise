@@ -13,9 +13,9 @@ const twilioClient = require('twilio')(accountSid, authToken);
 
 function messageSubscribers(sendToNumber, eventMsg) {
     twilioClient.messages.create({
-        to: sendToNumber, //'+18472266734', // sendToNumber
+        to: sendToNumber,
         from: appPhone, // Valid twilio assigned number
-        body: eventMsg //'A new event at Barcade'// event.message,
+        body: eventMsg // event description,
     }, (err, message) => {
       if (err) return console.log(err.message);
 
@@ -32,15 +32,16 @@ exports.sendSMS = function(req, res) {
         }
       }]
     }).then((users) => {
-      console.log(users)
-      // users.forEach((user) => {
-      //    const validNumber = user.countryCode + user.phone;
-      //    user.Events.forEach((event) => {
-      //       messageSubscribers(validNumber, event.eventDescription)
-      //    });
+         users.forEach((user) => {
+
+           const validNumber = user.countryCode + user.phone;
+
+           user.Events.forEach((event) => {
+              messageSubscribers(validNumber, event.eventDescription)
+           });
           res.json({users: users});
-      // }).catch((err) => console.log(err));
-  })
+    }).catch((err) => console.log(err));
+  }).catch((err) => console.log(err));
 };
 
 
