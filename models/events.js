@@ -37,6 +37,12 @@ module.exports = function(sequelize, DataTypes) {
                 ],
                 notNull: true
             }
+        },
+
+        eventActive: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+          defaultValue: false,
         }
 
     }, {

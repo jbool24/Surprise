@@ -2,7 +2,7 @@
     app.views.LoginView = app.views.BaseView.extend({
         // name of the template file to load from the server
         templateName: 'login',
-
+        //should be index
         // UI events
         events: {
             'submit #loginForm': 'login'
