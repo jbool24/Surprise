@@ -17,7 +17,7 @@ function messageSubscribers(sendToNumber, eventMsg) {
         from: appPhone, // Valid twilio assigned number
         body: eventMsg // event description,
     }, (err, message) => {
-      if (err) return console.log(err.message);
+        if (err) return console.log(err.message);
 
         console.log(`From Twilio---- ${message.sid}`);
     });
@@ -43,6 +43,21 @@ exports.sendSMS = function(req, res) {
     }).catch((err) => console.log(err));
   }).catch((err) => console.log(err));
 };
+
+exports.receiveSMS = function(req, res) {
+  if (req.from) {
+    Users.create({
+      phone: req.from,
+      countryCode: '+1'
+    }).then((user) => {
+      const twiml = new twilioClient.TwimlResponse();
+      twiml.message('Thanks you have been added.');
+      res.writeHead(200, {'Content-Type': 'text/xml'});
+      res.end(twim.toString());
+    }).catch(err => console.log(err));
+  }
+};
+
 
 
 const admins = auth.admins;
