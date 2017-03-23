@@ -4,8 +4,10 @@ var exphbs = require("express-handlebars");
 /* GET create page. */
 
 var creation = require("../models/users.js");
-router.get('/:create', function(req, res, next) {
-  res.render('create', {body});
+
+
+router.get('/create', function(req, res, next) {
+  res.render('create');
 });
 
 module.exports = router;
