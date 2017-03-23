@@ -4,7 +4,8 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const index = require('./routes/index.js');
+const indexRoutes = require('./routes');
+console.log(indexRoutes)
 const usersRoute = require('./routes/users.js');
 const createRoute = require('./routes/create.js');
 const app = express();
@@ -26,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.use( indexRoutes);
 app.get('/users', usersRoute);
 app.use('/create', createRoute);
 
