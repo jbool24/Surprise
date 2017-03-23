@@ -6,9 +6,11 @@ var exphbs = require("express-handlebars");
 
 var eventList = require("../models/events.js");
 
-router.get('/:events', function(req, res, next) {
-  router.Events.findAll()
-  .then(res.render('Events',{#each events}));
-});
+router.get('/events', function(req, res, next) {
+  db.Events.findAll({}).then(function)(dbEvents){
+  	res.render('events',{events:events});
+  });
+ 
+ });
 
 module.exports = router;

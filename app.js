@@ -4,9 +4,9 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-var index = require('./routes/index.js');
-var usersRoute = require('./routes/users.js');
-var createRoute = require('./routes/create.js');
+const index = require('./routes/index.js');
+const usersRoute = require('./routes/users.js');
+const createRoute = require('./routes/create.js');
 const app = express();
 var exphbs = require("express-handlebars");
 
