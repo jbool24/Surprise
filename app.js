@@ -4,6 +4,13 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+<<<<<<< HEAD
+const index = require('./routes/index.js');
+const usersRoute = require('./routes/users.js');
+const createRoute = require('./routes/create.js');
+const app = express();
+var exphbs = require("express-handlebars");
+=======
 const index = require('./routes/index');
 const users = require('./routes/users');
 const session = require('express-session');
@@ -12,12 +19,16 @@ const sess = {
  secret: 'keyboard cat',
  cookie: {}
 };
+>>>>>>> a83666ee7a619ee9402f3a6c905d35213b924f59
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+/*app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');*/
+
+app.engine("handlebars", exphbs({ defaultLayout: "layout" }));
+app.set("view engine", "hbs");
 
 app.use(session(sess));
 // uncomment after placing your favicon in /public
@@ -29,7 +40,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.get('/users', usersRoute);
+app.use('/create', createRoute);
 
 // REST API for Authentication
 require('./api')(app);
