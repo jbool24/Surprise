@@ -1,7 +1,6 @@
 const bcrypt        = require('bcrypt');
 const authConfig    = require('../config/auth');
-const onetouch      = require('../api/onetouch');
-const hooks         = require('../hooks/user-hooks');
+
 
 // Create authenticated Authy API client
 const authy = require('authy')(authConfig.authyApiKey);
@@ -50,6 +49,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
 
+        isBiz: {
+          type: DataTypes.BOOLEAN,
+          default: false
+        },
+
         password: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -62,17 +66,12 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 Users.belongsToMany(models.Events, {through: 'UserEvents'});
             },
-            comparePassword: hooks.comparePassword,
-            sendOneTouch: hooks.sendOneTouch,
-            sendAuthyToken: hooks.sendAuthyToken,
-            verifyAuthyToken: hooks.verifyAuthyToken
-        },
-        instanceMethods: {}
+        }
     });
 
     Users.hook('beforeCreate', function(user, {}, next) {
         console.log("hook has been called")
-        const self = user;
+        let self = user;
         // only hash the password if it has been modified (or is new)
         if (!self.changed('password'))
             return next();
@@ -93,25 +92,6 @@ module.exports = function(sequelize, DataTypes) {
             });
         });
 
-        if (!self.authyId) {
-            // Register this user with Authy if it's a new user
-            authy.register_user(self.email, self.phone, self.countryCode, function(err, response) {
-                if (err) {
-                    if (response && response.json) {
-                        response.json(err);
-                    } else {
-                        console.error(err);
-                    }
-                    return;
-                }
-                self.authyId = response.user.id;
-                self.save(function(err, doc) {
-                    if (err || !doc)
-                        return next(err);
-                    self = doc;
-                });
-            });
-        };
     });
     //'return' the post after defining
     return Users;

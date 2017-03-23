@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET events listing. */
+/* GET home page. */
 router.get('/', function(req, res, next) {
-  router.Events.findAll()
-  .then(res.json('events'));
+
+  res.render('create', { title:'Create New User' });
 });
 
 module.exports = router;
-
