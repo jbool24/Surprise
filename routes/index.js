@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var exphbs = require("express-handlebars");
 
-/* GET home page. */
+var login = require("../models/session.js");
+
+/* GET home page. whihc is the login page */
 router.get('/', function(req, res, next) {
-  res.render('index', { title:'Surprise' });
+  res.render('index', {body});
 });
 
 module.exports = router;

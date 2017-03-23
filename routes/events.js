@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
-
+var exphbs = require("express-handlebars");
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+
+
+var eventList = require("../models/events.js");
+
+router.get('/:events', function(req, res, next) {
   router.Events.findAll()
-  .then(res.json('Events'));
+  .then(res.render('Events',{#each events}));
 });
 
 module.exports = router;

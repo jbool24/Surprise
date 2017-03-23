@@ -4,15 +4,19 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const index = require('./routes/index');
-const users = require('./routes/users');
-
+var index = require('./routes/index.js');
+var usersRoute = require('./routes/users.js');
+var createRoute = require('./routes/create.js');
 const app = express();
+var exphbs = require("express-handlebars");
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+/*app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');*/
+
+app.engine("handlebars", exphbs({ defaultLayout: "layout" }));
+app.set("view engine", "hbs");
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -23,7 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.get('/users', usersRoute);
+app.use('/create', createRoute);
 
 // REST API for Authentication
 require('./api')(app);
