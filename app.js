@@ -4,24 +4,19 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-<<<<<<< HEAD
-const index = require('./routes/index.js');
-const usersRoute = require('./routes/users.js');
+/*const usersRoute = require('./routes/users.js');*/
 const createRoute = require('./routes/create.js');
 const app = express();
 var exphbs = require("express-handlebars");
-=======
 const index = require('./routes/index');
-const users = require('./routes/users');
 const session = require('express-session');
 
 const sess = {
  secret: 'keyboard cat',
  cookie: {}
 };
->>>>>>> a83666ee7a619ee9402f3a6c905d35213b924f59
 
-const app = express();
+
 
 // view engine setup
 /*app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.get('/users', usersRoute);
+/*app.get('/users', usersRoute);*/
 app.use('/create', createRoute);
 
 // REST API for Authentication
@@ -54,7 +49,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+/*app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development'
@@ -64,6 +59,6 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error', { err });
-});
+});*/
 
 module.exports = app;
