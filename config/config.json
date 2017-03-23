@@ -4,20 +4,15 @@
     "password": "Oakland2012!",
     "database": "surprise_development",
     "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "surprise_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "-0400"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "surprise_production",
+    "database": "surprise_db",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "-0400"
   }
 }

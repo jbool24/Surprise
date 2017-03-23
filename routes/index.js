@@ -6,7 +6,7 @@ var login = require("../models/session.js");
 
 /* GET home page. whihc is the login page */
 router.get('/', function(req, res, next) {
-  res.render('index', {body});
+  res.render('index');
 });
 
 module.exports = router;

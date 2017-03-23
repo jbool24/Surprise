@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+
 var exphbs = require("express-handlebars");
 /* GET users listing. */
 
@@ -12,6 +13,7 @@ router.get('/events', function(req, res, next) {
   });
  
  });
+
 
 module.exports = router;
 

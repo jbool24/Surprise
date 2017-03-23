@@ -20,47 +20,21 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 // associations can be defined here
             },
-            createSessionForUser,
-        },
-        instanceMethods: {
-            getUser,
-        },
+            createSessionForUser
+        }
     });
 
-
     // Create a session for the given user
-    function createSessionForUser(user, conf, cb) {
-        console.log('Inside createSessionForUser-------------------') // TODO
-        console.log(`USER ID: ${user.id}-${conf}--${user.password}`)
+    function createSessionForUser(user, pre_confirmed, cb) {
         const newSession = {
-          userId: user.id,
-          confirmed: conf,
-          token: uuid.v1()
+            userId: user.id,
+            confirmed: pre_confirmed,
+            token: uuid.v1()
         };
 
-        // we need to do the 2FA step first
-        if (!conf) {
-            user.sendOneTouch((err, authyResponse) => {
-                if (err)
-                    return cb.call(newSession, err);
-                save(authyResponse);
-            });
-        } else {
-            // if it's pre-confirmed just save the session
-            save();
-        }
-
         // Save the session object
-        function save(authyResponse) {
-            Session.create(newSession).then(function(sessionInstance) {
-                cb(null,sessionInstance);
-            });
-        }
-    };
+        Session.create(newSession).then((sessionInstance) => cb(null, sessionInstance));
 
-    // Instance Method Declaration: Gets the user model for this session
-    function getUser(cb) {
-        Users.findById(this.userId, cb);
     };
 
     return Session;
