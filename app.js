@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const exphbs = require("express-handlebars");
 const session = require('express-session');
 
+require('dotenv').config()
 
 const sess = {
   secret: 'keyboard cat',
@@ -37,7 +38,7 @@ app.get('/signup', function (req, res, next) {
 const db = require("./models");
 app.get('/events', function(req, res, next) {
   console.log("Called events")
-  
+
       res.render('events');
 });
 
