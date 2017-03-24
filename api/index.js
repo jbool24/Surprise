@@ -30,6 +30,4 @@ module.exports = function(app) {
   // routes message to users
   app.get('/message', twilio.sendSMS);
 
-  // route to recieve SmS request from twilio
-  app.post('/sms', twilio.receiveSMS);
 };
