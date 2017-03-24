@@ -1,5 +1,4 @@
 const bcrypt        = require('bcrypt');
-const authConfig    = require('../config/auth');
 
 const SALT_WORK_FACTOR = 10;
 
