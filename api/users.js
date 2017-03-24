@@ -10,9 +10,9 @@ exports.create = function(req, res) {
         password: p.password,
         email: p.email,
         phone: p.phone,
-        countryCode: p.countryCode
+        countryCode: p.countryCode,
+        isBiz: true
     }).then((user) => {
-      // console.log(user) // TODO
         // Create a pre-authorized session token for the new user
         Session.createSessionForUser(user, true, (err, sessionInstance) => {
                 if (err) {

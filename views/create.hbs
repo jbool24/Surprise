@@ -1,41 +1,39 @@
-<br></br>
-
-{{#each users}}
 
   <div class= "card-panel hoverable">
-    <div class="row" id="Page2">
-      <form class="col s12">
-          <div class="row">
-              <div class="input-field col s6">
-                  <input  id="userName" type="text" class="validate">
-                  <label for="userName">Username {{username}}</label>
-              </div>
-              <div class="input-field col s6">
-                  <input id="password" type="text" class="validate">
-                  <label for="passowrd">Password {{password}}</label>
-              </div>
+     <div class="row" id="Page2">
+    <form class="col s12" action ="/" method ="post">
+      <div class="row">
+        <div class="input-field col s6">
+          <input  id="user_name" type="text" class="validate" name="userName">
+          <label for="user_name">Username</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="password" type="text" class="validate" name ="password">
+          <label for="passowrd">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" name ="email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="country-code" type="text" class="validate" name="countryCode">
+          <label for="country-code">Country Code</label>
+        </div>
+        <div class=" input-field col s6">
+            <input id="phone" type="text" class="validate" name="phone">
+            <label for="phone">Phone Number</label>
           </div>
-          <div class="row">
-              <div class="input-field col s12">
-                  <input id="email" type="email" class="validate">
-                  <label for="email">Email {{email}}</label>
-              </div>
-          </div>
-          <div class="row">
-              <div class="input-field col s6">
-                <input id="country-code" type="text" class="validate">
-                <label for="country-code">Country Code {{countryCode}}</label>
-              </div>       
-              <div class=" input-field col s6">
-                <input id="phone" type="text" class="validate">
-                <label for="phone">Phone Number {{phone}} </label>
-              </div>
-          </div>
-      </form>
-    </div>
+        </div>
+        </div>
+      </div>
+
+      <button type ="submit" class= "btn waves-effect waves-light">
+      Register
+      </button>
+    </form>
   </div>
-
-{{/each}}
  
-<h1>{{body}}</h1>
-

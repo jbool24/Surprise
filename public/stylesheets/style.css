@@ -12,15 +12,11 @@ a {
 }
 
 .parallax {
-    
     background-image: url("./images/events.jpg");
     height: 500px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-},
-<<<<<<< HEAD
-=======
 
->>>>>>> b6a4a825d9ca36e0ff989012577623d0d90f0621
+}
