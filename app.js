@@ -4,24 +4,18 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-/*const usersRoute = require('./routes/users.js');*/
-const createRoute = require('./routes/create.js');
-const app = express();
-var exphbs = require("express-handlebars");
-const index = require('./routes/index');
+const exphbs = require("express-handlebars");
 const session = require('express-session');
 
+
 const sess = {
- secret: 'keyboard cat',
- cookie: {}
+  secret: 'keyboard cat',
+  cookie: {}
 };
 
-
+const app = express();
 
 // view engine setup
-/*app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');*/
-
 app.engine("handlebars", exphbs({ defaultLayout: "layout" }));
 app.set("view engine", "hbs");
 
@@ -34,12 +28,22 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-/*app.get('/users', usersRoute);*/
-app.use('/create', createRoute);
+app.get('/', (req, res) => res.render('index'));
+
+app.get('/signup', function (req, res, next) {
+  res.render('signup');
+});
+
+const db = require("./models");
+app.get('/events', function(req, res, next) {
+  console.log("Called events")
+  
+      res.render('events');
+});
 
 // REST API for Authentication
 require('./api')(app);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
