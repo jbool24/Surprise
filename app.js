@@ -4,8 +4,8 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-/*const usersRoute = require('./routes/users.js');*/
-const createRoute = require('./routes/create.js');
+/*const usersRoute = require('./routes/users.js');
+const signup = require('./routes/signup.js');*/
 const app = express();
 var exphbs = require("express-handlebars");
 const index = require('./routes/index');
@@ -35,11 +35,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-/*app.get('/users', usersRoute);*/
-app.use('/create', createRoute);
+
 
 // REST API for Authentication
 require('./api')(app);
+
+router.get('/events', function(req, res, next) {
+	consoloe.log(events)
+  db.Events.findAll({}).then(function)(dbEvents){
+  	res.render('events',{events:events});
+  });
+ 
+ });
+
+
+router.get('/signup', function (req, res, next) {
+  res.render('signup');
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

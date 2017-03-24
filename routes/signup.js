@@ -7,8 +7,8 @@ var exphbs = require("express-handlebars");
 var creation = require("../models/users.js");
 
 
-router.get('/create', function (req, res, next) {
-  res.render('create');
+router.get('/signup', function (req, res, next) {
+  res.render('signup');
 });
 
 
