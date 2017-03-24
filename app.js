@@ -5,7 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 /*const usersRoute = require('./routes/users.js');*/
-const createRoute = require('./routes/create.js');
+const sigupRoute = require('./routes/signup.js');
 const app = express();
 var exphbs = require("express-handlebars");
 const index = require('./routes/index');
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 /*app.get('/users', usersRoute);*/
 
-app.use('/create', createRoute);
+app.use('/signup', signupRoute);
 
 // REST API for Authentication
 require('./api')(app);
