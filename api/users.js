@@ -19,7 +19,8 @@ exports.create = function(req, res) {
                     console.log(err) // TODO
                     res.status(500).send({message:'Your user was created but we could not log you in - please log in again.'});
                 } else {
-                    res.send({ token: sessionInstance.token });
+                    req.session.token = sessionInstance.token;
+                    res.redirect('events');
                 }
             });
     }).catch((err) => {
