@@ -4,8 +4,8 @@ const db =  require('../models');
 const Users = db.Users;
 const Events = db.Events;
 
-const accountSid = auth.prod.sid;
-const authToken = auth.prod.token;
+const accountSid = process.env.TWILIO_SID || auth.prod.sid;
+const authToken = process.env.TWILIO_TOKEN || auth.prod.token;
 const appPhone = auth.prod.phone;
 
 const twilioClient = require('twilio')(accountSid, authToken);
