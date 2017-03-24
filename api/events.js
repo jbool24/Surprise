@@ -8,3 +8,10 @@ exports.create = function(req, res) {
       eventDescription: req.body.description,
     }).catch((err) => console.log(err));
 };
+
+
+exports.getAll = function(req, res) {
+  db.Events.findAll({}).then((events) => {
+    res.json({ events });
+  }).catch(err => console.log(err));
+}

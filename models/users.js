@@ -1,9 +1,6 @@
 const bcrypt        = require('bcrypt');
 const authConfig    = require('../config/auth');
 
-
-// Create authenticated Authy API client
-const authy = require('authy')(authConfig.authyApiKey);
 const SALT_WORK_FACTOR = 10;
 
 'use strict';
