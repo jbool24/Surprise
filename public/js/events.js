@@ -1,32 +1,32 @@
+$(document).ready(function() {
+    var page = window.location.pathname;
+    if (page === "/events") {
+        listEvents();
+    }
+});
+
 function listEvents() {
     var baseurl = window.location.origin;
+    var url = baseurl + "/events/all";
+    
+    $.ajax({method: "GET", url: url, contentType: "application/json; charset=utf-8"}).done(function(data) {
+        var events = data.events;
+        var tableBody = $('.table-data');
+        var tableData = $('<td>');
 
-    $.ajax({
-        type: "GET",
-        url: baseurl + "events/all",
-        data: "{}",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function(data) {
-            var events = data.events;
-            var eventslist = $('events-target');
-            var listItem = $('<li>');
+        tableBody.empty();
 
-            eventslist.empty();
-            events.forEach(function(event) {
-              listItem.
-              eventslist.append()
-            })
+        events.forEach(function(event, idx) {
+            var tableRow = $('<tr>');
+            var formatedDateTime = moment(event.eventDateTime).format('MM/DD/YYYY h:mm a');
+            var tableData = `<td>${event.eventName}</td><td>${formatedDateTime}</td><td>${event.eventOfferDuration}</td><td>${event.eventDescription}</td>`
 
-            //   $.each(msg.d, function (index, obj) { let row = "
-            //         <tr>" + "
-            //         <td>" + obj.eventName + "</td>" + "
-            //         <td>" + obj.eventDateTime + "</td>" + "
-            //         <td>" + obj.eventOfferDuration + "</td>" + "
-            //         <td>" + obj.eventDescription + "</td>" + "
-            //         <td>" + obj.eventActive + "</td>" + "
-            //         </tr>"
-            // });
-        }
+            //adds idx as id attribute
+            tableRow.attr('id', idx);
+
+            tableBody.append(tableRow)
+            $('#' + idx).append(tableData);
+        });
     });
+
 }

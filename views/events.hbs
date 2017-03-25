@@ -1,9 +1,20 @@
 <br></br>
 <div class="card-panel hoverable">
     <div class="row">
-        <ul id='events-target' class="list group">
-            <li class="list-group-item">No Events yet</li>
-        </ul>
+        <table id='events-table' class="striped highlight">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Event Date/Time</th>
+                    <th>Event Duration</th>
+                    <th>Event Description</th>
+                </tr>
+            </thead>
+
+            <tbody class='table-data'></tbody>
+
+        </table>
+
     </div>
     <div class="row">
         <a href="/addevent" class="btn waves-effect waves-light">
