@@ -1,4 +1,5 @@
-var db = require('../models');
+const db = require('../models');
+const request = require('request');
 
 (function() {
     db.Events.findAll({}).then((events) => {
@@ -29,6 +30,14 @@ var db = require('../models');
             }
 
         });
+
+    }).then(() => {
+        request
+        .get('http://surprise-app.herokuapp.com/message')
+        .on('response', (res) => {
+            console.log(res)
+            console.log(res.statusCode)
+        }).error((err) => console.log(err))
     });
 
 })();

@@ -38,7 +38,7 @@ exports.sendSMS = function(req, res) {
            user.Events.forEach((event) => {
               messageSubscribers(validNumber, event.eventDescription)
            });
-          res.json({users: users});
+        res.json({users: users});
     }).catch((err) => console.log(err));
   }).catch((err) => console.log(err));
 };
