@@ -1,0 +1,41 @@
+ <div class="row">
+      <form class=" newEvent col s12" >
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="eventName" type="text" class="validate">
+            <label> Event Name </label>
+          </div>
+          <div class="eventDateTime col s6">
+            <input id="date" type="text" class="validate">
+            <label>Event Date </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="eventDateTime col s12">
+            <input id="time" type="text" class="validate">
+            <label>Event Time </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="eventDuration col s12">
+            <label> Event Duration </label>
+              <select class="browser-default">
+                <option value="1">All Day</option>
+                <option value="2">All Night</option>
+                <option value="3">All Weekend</option>
+              </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="eventDescription col s6">
+            <i class="material-icons prefix">mode_edit</i>
+            <textarea type="text" name="event" class="materialize-textarea"></textarea>
+            <label>Event Description</label>
+          </div>
+      </form>
+    </div>  
+
+  <button type="submit"class="btn btn-sm btn-primary text-center" id="save-button">Save Event</button>
+  
+ 
+</ul>  

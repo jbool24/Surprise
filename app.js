@@ -9,6 +9,7 @@ const session = require('express-session');
 
 require('dotenv').config()
 
+
 const sess = {
   secret: 'keyboard cat',
   cookie: {}
@@ -35,6 +36,12 @@ app.get('/signup', function (req, res, next) {
   res.render('signup');
 });
 
+
+app.get('/addevent', function (req,res,next){
+  res.render('addevent');
+});
+
+
 const db = require("./models");
 app.get('/events', function(req, res, next) {
   console.log("Called events")
@@ -60,7 +67,6 @@ app.use(function(req, res, next) {
     res.locals.error = req.app.get('env') === 'development'
         ? err
         : {};
-
     // render the error page
     res.status(err.status || 500);
     res.render('error', { err });

@@ -43,6 +43,25 @@
   /* $(document).ready(function() {
     Materialize.updateTextFields();
   });*/
+  $(document).ready(function () {
+    $("#loginForm").click(function () {
+        listEvents();
+    });
+});
+
+  function listEvents() {
+
+     $.ajax({
+            type: "POST",
+            url: "localhost3000/events",
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                $.each(msg.d, function (index, obj) {
+                    row += "<tr><td>" + obj.eventName + "</td><td>" + obj.eventDateTime + "</td><td>" + obj.eventOfferDuration + "</td></tr>" + obj.eventDescription + "<td></td>"+ obj.eventActive +"</td></tr>";
+                   
+                });
 
 
 
