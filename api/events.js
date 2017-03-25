@@ -1,12 +1,13 @@
 const db = require('../models');
 
 exports.create = function(req, res) {
+  const time = req.body.time;
     db.Events.create({
       eventName: req.body.eventName,
-      eventDateTime: req.body.dateTime,
+      eventDateTime: req.body.date + " " + time,
       eventOfferDuration: req.body.duration,
-      eventDescription: req.body.description,
-    }).catch((err) => console.log(err));
+      eventDescription: req.body.description
+    }).then(() => res.redirect("/events")).catch((err) => console.log(err));
 };
 
 

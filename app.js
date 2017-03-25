@@ -46,7 +46,7 @@ const db = require("./models");
 app.get('/events', function(req, res, next) {
   console.log("Called events")
 
-      res.render('events');
+  res.render('events');
 });
 
 // REST API for Authentication

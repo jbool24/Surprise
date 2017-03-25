@@ -2,23 +2,20 @@
 <html>
   <head>
     <title>{{title}}</title>
-  
-    <link rel= 'stylesheet' href='/js/login.js'/>
+
     <!-- materilize CDN-->
 
     <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-  
-        
-        <!--Import Google Icon Font-->
-     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- 
+
+
+
+
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link rel='stylesheet' href='/stylesheets/style.css'/>
@@ -36,36 +33,23 @@
           </nav>
     </div>
     {{{body}}}
-  </body> 
+  </body>
 
 
+  <!-- Compiled and minified JavaScript -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+  <script type="text/javascript" src='/js/events.js'></script>
   <script id= "main-template">
-  /* $(document).ready(function() {
-    Materialize.updateTextFields();
-  });*/
-  $(document).ready(function () {
-    $("#loginForm").click(function () {
-        listEvents();
-    });
-});
 
-  function listEvents() {
-
-     $.ajax({
-            type: "POST",
-            url: "localhost3000/events",
-            data: "{}",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (msg) {
-                $.each(msg.d, function (index, obj) {
-                    row += "<tr><td>" + obj.eventName + "</td><td>" + obj.eventDateTime + "</td><td>" + obj.eventOfferDuration + "</td></tr>" + obj.eventDescription + "<td></td>"+ obj.eventActive +"</td></tr>";
-                   
-                });
+          $(document).ready(function () {
+            $("#loginForm").click(function () {
+              listEvents();
+            });
+          });
 
 
+  </script>
 
- 
-   </script>
+
 </html>
-

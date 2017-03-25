@@ -1,41 +1,38 @@
- <div class="row">
-      <form class=" newEvent col s12" >
-        <div class="row">
-          <div class="input-field col s6">
-            <input id="eventName" type="text" class="validate">
-            <label> Event Name </label>
-          </div>
-          <div class="eventDateTime col s6">
-            <input id="date" type="text" class="validate">
-            <label>Event Date </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="eventDateTime col s12">
-            <input id="time" type="text" class="validate">
-            <label>Event Time </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="eventDuration col s12">
-            <label> Event Duration </label>
-              <select class="browser-default">
-                <option value="1">All Day</option>
-                <option value="2">All Night</option>
-                <option value="3">All Weekend</option>
-              </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="eventDescription col s6">
-            <i class="material-icons prefix">mode_edit</i>
-            <textarea type="text" name="event" class="materialize-textarea"></textarea>
-            <label>Event Description</label>
-          </div>
-      </form>
-    </div>  
+<div class="card-panel hoverable">
+    <div class="row">
+        <form class=" newEvent col s12" action="/events" method="post">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="eventName" type="text" name="eventName" class="validate" placeholder="Event Name"/>
+                </div>
+                <div class="eventDateTime col s3">
+                    <label>Event Date </label>
+                    <input id="date" type="date" name="date" class="validate" />
 
-  <button type="submit"class="btn btn-sm btn-primary text-center" id="save-button">Save Event</button>
-  
- 
-</ul>  
+                </div>
+                <div class="time col s3" >
+                  <label> Event Time </label>
+                  <input type="time" name="time" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="eventDuration col s12">
+                    <label> Event Duration(mins) </label>
+                    <select class="browser-default" name="duration">
+                      <option value="10">10</option>
+                      <option value="30">30</option>
+                      <option value="60">60</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="eventDescription col s6">
+                  <label>Event Description</label>
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea type="text" name="description" class="materialize-textarea"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary text-center" id="save-button">Save Event</button>
+        </form>
+    </div>
+</div>
