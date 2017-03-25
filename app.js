@@ -1,25 +1,26 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const exphbs = require("express-handlebars");
-const session = require('express-session');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var exphbs = require("express-handlebars");
+var session = require('express-session');
 
 require('dotenv').config()
 
 
-const sess = {
+var sess = {
   secret: 'keyboard cat',
   cookie: {}
 };
 
-const app = express();
-
+var app = express();
+var port = 3000;
 // view engine setup
 app.engine("handlebars", exphbs({ defaultLayout: "layout" }));
-app.set("view engine", "hbs");
+app.set("view engine", "handlebars");
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(session(sess));
 // uncomment after placing your favicon in /public
@@ -30,7 +31,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => res.render('index'));
+app.get('/', (req, res) => { 
+    res.render('index');
+
+});
 
 app.get('/signup', function (req, res, next) {
   res.render('signup');
@@ -42,7 +46,7 @@ app.get('/addevent', function (req,res,next){
 });
 
 
-const db = require("./models");
+var db = require("./models");
 app.get('/events', function(req, res, next) {
   console.log("Called events")
 
@@ -51,14 +55,12 @@ app.get('/events', function(req, res, next) {
 
 // REST API for Authentication
 require('./api')(app);
+app.listen(port, function() {
+    console.log('APP IS LISTENING ON PORT ' + port)
+})
 
+// catch 404 and forward to error handlerapp.use(function(req, res, next) {    var err = new Error('Not Found');
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
 
 // error handler
 /*app.use(function(err, req, res, next) {
@@ -72,4 +74,3 @@ app.use(function(req, res, next) {
     res.render('error', { err });
 });*/
 
-module.exports = app;
