@@ -4,6 +4,7 @@
   "description": "App that users sign up for and the bars/restaurants/businesses can provide limited time events to users based on either their location or by them actively requesting them.",
   "main": "index.js",
   "dependencies": {
+    "authy": "^1.2.0",
     "bcrypt": "^1.0.2",
     "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
@@ -14,14 +15,14 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.1",
     "hbs": "~4.0.1",
+    "mongoose": "^4.9.3",
     "morgan": "~1.7.0",
-    "mysql": "^2.13.0",
-    "node-uuid": "^1.4.7",
+    "pug": "^2.0.0-beta11",
     "qs": "^6.4.0",
     "request": "^2.81.0",
-    "sequelize": "^3.30.2",
     "serve-favicon": "~2.3.2",
-    "twilio": "^2.11.1"
+    "twilio": "^2.11.1",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -30,13 +31,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/klawgolfer7/Surprise.git"
+    "url": "git+https://github.com/jbool24/Surprise.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/klawgolfer7/Surprise/issues"
+    "url": "https://github.com/jbool24/Surprise/issues"
   },
-  "homepage": "https://github.com/klawgolfer7/Surprise#readme"
+  "homepage": "https://github.com/jbool24/Surprise#readme"
 }

@@ -1,8 +1,8 @@
-const db = require('../models');
+const Event = require('../models/Event');
 
 exports.create = function(req, res) {
   const time = req.body.time;
-    db.Events.create({
+    Events.create({
       eventName: req.body.eventName,
       eventDateTime: req.body.date + " " + time,
       eventOfferDuration: req.body.duration,

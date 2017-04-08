@@ -1,0 +1,16 @@
+extends layouts/main
+
+block content
+    br
+    .card-panel(class="hoverable")
+        .row
+            table(id='events-table' class="striped highlight")
+                thead
+                    tr
+                      th Event Name
+                      th Event Date/Time
+                      th Event Duration
+                      th Event Description
+                tbody(class='table-data')
+        .row
+            a(href="/addevent" class="btn waves-effect waves-light") Add an event

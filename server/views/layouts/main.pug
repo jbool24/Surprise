@@ -1,0 +1,49 @@
+doctype html
+html
+    head
+        block styles
+            meta(http-equiv='content-type' content='application/xhtml+xml; charset=utf-8')/
+            title Surprise
+            link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+                //-- materilize CDN
+            link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css')
+                //-- Import Google Icon Font
+            link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
+                //-- Main Styles
+            link(rel='stylesheet' href='/css/style.css')
+
+        block scripts_top
+
+    body(class='parallax')
+        block error
+        header
+            nav
+                .nav-wrapper
+                    a(href='#!' class='brand-logo')
+                        i(class='material-icons') star
+                        i Surprise!
+                    ul(class='right hide-on-med-and-down')
+                        li
+                            a(href='/events')
+                                i(class='material-icons') search
+                        li
+                            a(href='/events')
+                            i(class='material-icons') refresh
+
+            h1 Hello WORLD
+
+        section(class='content-wrapper')
+            block content
+
+
+
+        footer
+          block pre-footer
+          block footer
+                .copyright Made with
+                    i(class='fa fa-heart') Justin Bellero
+
+        block scripts_btm
+            script(type='text/javascript' src='https://code.jquery.com/jquery-2.1.1.min.js')
+            script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js')
+            script(type='text/javascript' src='https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js')

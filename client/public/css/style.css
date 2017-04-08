@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+h1 {
+    color: blue;
+}
+
+header {}
+
+section.content-wrapper {
+  flex-grow: 2;
+  margin: 0 20px;
+}
+
+footer {}
+
+.error {
+    margin: 8px 0;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.nav-wrapper {
+    background-color: #2bbbad;
+}
+
+
+.copyright {
+    text-align: center;
+    background-color: purple;
+}
+
+nav .brand-logo i {
+    padding-left: 10px;
+}
+
+.parallax {
+    background-image: url("../images/events.jpg");
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

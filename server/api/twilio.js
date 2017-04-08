@@ -1,7 +1,6 @@
 const twilio = require('twilio');
-const db =  require('../models');
-const Users = db.Users;
-const Events = db.Events;
+const Users =  require('../models/User');
+const Events =  require('../models/Event');
 
 const accountSid = process.env.TWILIO_SID;
 const authToken = process.env.TWILIO_TOKEN;
@@ -23,7 +22,7 @@ function messageSubscribers(sendToNumber, eventMsg) {
 }
 
 exports.sendSMS = function(req, res) {
-    Users.findAll({
+    User.find({
       include: [{
         model: Events,
         where: {
